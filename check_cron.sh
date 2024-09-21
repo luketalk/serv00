@@ -22,7 +22,7 @@ else
     (crontab -l | grep -F "@reboot pkill -kill -u $(whoami) && ${CRON_S5} && ${CRON_NEZHA} && ${CRON_BOT}") || (crontab -l; echo "@reboot pkill -kill -u $(whoami) && ${CRON_S5} && ${CRON_NEZHA} && ${CRON_BOT}") | crontab -
     (crontab -l | grep -F "* * pgrep -x \"nezha-agent\" > /dev/null || ${CRON_NEZHA}") || (crontab -l; echo "*/12 * * * * pgrep -x \"nezha-agent\" > /dev/null || ${CRON_NEZHA}") | crontab -
     (crontab -l | grep -F "* * pgrep -x \"s5\" > /dev/null || ${CRON_S5}") || (crontab -l; echo "*/12 * * * * pgrep -x \"s5\" > /dev/null || ${CRON_S5}") | crontab -
-    (crontab -l | grep -F "* * pgrep -x bot > /dev/null || ${CRON_BOT} || (crontab -l; echo "*/12 * * * * pgrep -x bot > /dev/null || && ${CRON_BOT} | crontab -
+    (crontab -l | grep -F "* * pgrep -x bot > /dev/null || ${CRON_BOT}") || (crontab -l; echo "*/12 * * * * pgrep -x bot > /dev/null || && ${CRON_BOT}") | crontab -
 
   elif [ -e "${WORKDIR}/start.sh" ]; then
     echo "添加 nezha 的 crontab 重启任务"
